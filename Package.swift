@@ -1,13 +1,11 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.3
 
 import PackageDescription
 
 let package = Package(
     name: "Mantle",
     platforms: [
-        .macOS(.v10_10),
         .iOS(.v9),
-        .tvOS(.v9),
         .watchOS(.v2)
     ],
     products: [
@@ -17,15 +15,8 @@ let package = Package(
         )
     ],
     targets: [
-        .target(
-            name: "Mantle",
-            dependencies: ["extobjc"],
-            path: "Mantle",
-            exclude: ["extobjc"]
-        ),
-        .target(
-            name: "extobjc",
-            path: "Mantle/extobjc"
-        )
+        .binaryTarget(name: "Mantle",
+                      url: "https://github.com/thedavidharris/Mantle/releases/download/2.3.0/Mantle.xcframework.zip",
+                      checksum: "1cfb8460991e755acc11fdf740aa4406f021a83191be2848a645345006ae2782")
     ]
 )
